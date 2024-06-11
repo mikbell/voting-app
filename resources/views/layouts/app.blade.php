@@ -37,17 +37,63 @@
             </div>
         </header>
 
-        <!-- Page Content -->
         <main class="container mx-auto flex max-w-custom">
-            <div class="w-70 mr-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias alias culpa
-                suscipit ipsam
-                dignissimos quos placeat voluptates eos, eveniet reprehenderit delectus quo? Minima molestias cum
-                laborum officia. Eligendi, suscipit dolorem! Adipisci quae consequuntur tempore natus, dolorum quas
-                ducimus consequatur a perferendis, laborum reprehenderit nulla vero atque esse, dolorem accusamus.
-                Consequatur eius non ipsum a rem nemo, dolore ullam facere expedita voluptatibus eligendi necessitatibus
-                amet exercitationem accusantium dolor doloribus saepe? Dolorem enim cupiditate labore ullam vitae atque
-                in qui accusantium culpa, odio soluta voluptatum at et quasi consequuntur, a, eaque sit? Accusamus ea
-                velit odio mollitia, consequatur consectetur dolore harum explicabo.</div>
+            <div class="w-70 mr-5">
+                <div class="bg-white border-2 border-blue rounded-xl mt-16"
+                    style="
+                    border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+                    border-image-slice: 1;
+                    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+                    background-origin: border-box;
+                    background-clip: content-box, border-box;">
+                    <div class="text-center px-6 py-2 pt-6 ">
+                        <h3 class="font-semibold text-base">Add an idea</h3>
+                        <p class="text-xs mt-4">Let us know what you would like and we'll take a look over!</p>
+                    </div>
+
+                    <form action="#" class="space-y-4 px-4 py-6">
+                        <div>
+                            <input type="text"
+                                class="w-full border-none text-sm bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2"
+                                placeholder="Your Idea">
+                        </div>
+                        <div>
+
+                            <select name="category_add" id="category_add"
+                                class="w-full bg-gray-100 rounded-xl text-sm border-none px-4 py-2 shadow">
+                                <option value="category 1">category 1</option>
+                                <option value="category 2">category 2</option>
+                                <option value="category 3">category 3</option>
+                                <option value="category 4">category 4</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <textarea name="idea" id="idea" cols="30" rows="4"
+                                class="w-full bg-gray-100 rounded-xl placeholder:gray-900 text-sm px-4 py-2 border-none"
+                                placeholder="describe your idea"></textarea>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-3">
+                            <button type="button"
+                                class="flex items-center justify-center w-1/2 h-11 bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-100 ease-in px-4 py-3">
+                                <svg class="text-gray-500 w-5 transform -rotate-45" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+                                </svg>
+
+                                Attach
+                            </button>
+
+                            <button type="submit"
+                                class="flex items-center justify-center w-1/2 h-11 bg-blue hover:bg-blueHover font-semibold text-white rounded-xl border border-gray-200 hover:border-gray-400 transition duration-100 ease-in px-4 py-3">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <div class="w-175">
                 <nav class="flex items-center justify-between text-xs">
@@ -86,6 +132,8 @@
                     {{ $slot }}
                 </div>
             </div>
+
+            <div class="w-24"></div>
         </main>
     </div>
 </body>
