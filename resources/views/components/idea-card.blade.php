@@ -11,15 +11,17 @@
         </div>
     </div>
 
-    <div class="flex px-2 py-6">
-        <a href="/" class="flex-none">
-            <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
-                alt="avatar" class="w-14 h-14 rounded-xl">
-        </a>
+    <div class="flex flex-1 px-2 py-6">
+        <div class="flex-none">
+            <a href="/">
+                <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
+                    alt="avatar" class="w-14 h-14 rounded-xl">
+            </a>
+        </div>
 
-        <div class="mx-4">
+        <div class="w-full mx-4">
             <h4 class="text-xl font-semibold">
-                <a href="" class="hover:underline">Title</a>
+                <a wire:navigate href="/idea" class="hover:underline">Title</a>
             </h4>
             <div class="text-gray-500 mt-3 line-clamp-3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laboriosam corporis culpa autem
@@ -47,15 +49,20 @@
                         class="flex items-center justify-center bg-gray-200 text-xxs font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4 transition duration-100 ease-in">
                         Open</div>
                     <div
-                        class="bg-gray-100 hover:bg-gray-200 rounded-full h-7 flex items-center py-2 px-3 transition duration-100 ease-in">
+                        class="bg-gray-100 hover:bg-gray-200 border rounded-full h-7 flex items-center py-2 px-3 transition duration-100 ease-in">
                         <svg fill="currentColor" width="24" height="6">
                             <path
                                 d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
                                 style="color: rgba(163, 163, 163, .5)">
                         </svg>
-                        <ul class="absolute w-44 font-semibold text-left ml-8 mt-24 bg-white shadow-dialog rounded-xl py-3">
-                            <li><a href="" class="hover:bg-gray-100 px-5 py-3 block transition duration-100 ease-in">Mark as spam</a></li>
-                            <li><a href="" class="hover:bg-gray-100 px-5 py-3 block transition duration-100 ease-in">Delete post</a></li>
+                        <ul
+                            class="hidden absolute w-44 font-semibold text-left ml-8 mt-24 bg-white shadow-dialog rounded-xl py-3">
+                            <li><a href=""
+                                    class="hover:bg-gray-100 px-5 py-3 block transition duration-100 ease-in">Mark as
+                                    spam</a></li>
+                            <li><a href=""
+                                    class="hover:bg-gray-100 px-5 py-3 block transition duration-100 ease-in">Delete
+                                    post</a></li>
                         </ul>
                     </div>
                 </div>
