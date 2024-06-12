@@ -18,7 +18,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-gray-900 text-sm">
+<body class="font-sans text-sm antialiased text-gray-900">
     <div class="min-h-screen bg-background">
 
         <header class="flex items-center justify-between px-8 py-4">
@@ -37,30 +37,24 @@
             </div>
         </header>
 
-        <main class="container mx-auto flex max-w-custom">
-            <div class="w-70 mr-5">
-                <div class="bg-white border-2 border-blue rounded-xl mt-16"
-                    style="
-                    border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
-                    border-image-slice: 1;
-                    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
-                    background-origin: border-box;
-                    background-clip: content-box, border-box;">
-                    <div class="text-center px-6 py-2 pt-6 ">
-                        <h3 class="font-semibold text-base">Add an idea</h3>
-                        <p class="text-xs mt-4">Let us know what you would like and we'll take a look over!</p>
+        <main class="container flex mx-auto max-w-custom">
+            <div class="mr-5 w-70">
+                <div class="mt-16 bg-white border-2 border-blue rounded-xl idea-form">
+                    <div class="px-6 py-2 pt-6 text-center ">
+                        <h3 class="text-base font-semibold">Add an idea</h3>
+                        <p class="mt-4 text-xs">Let us know what you would like and we'll take a look over!</p>
                     </div>
 
-                    <form action="#" class="space-y-4 px-4 py-6">
+                    <form action="#" class="px-4 py-6 space-y-4">
                         <div>
                             <input type="text"
-                                class="w-full border-none text-sm bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2"
+                                class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
                                 placeholder="Your Idea">
                         </div>
                         <div>
 
                             <select name="category_add" id="category_add"
-                                class="w-full bg-gray-100 rounded-xl text-sm border-none px-4 py-2 shadow">
+                                class="w-full px-4 py-2 text-sm bg-gray-100 border-none shadow rounded-xl">
                                 <option value="category 1">category 1</option>
                                 <option value="category 2">category 2</option>
                                 <option value="category 3">category 3</option>
@@ -70,14 +64,14 @@
 
                         <div>
                             <textarea name="idea" id="idea" cols="30" rows="4"
-                                class="w-full bg-gray-100 rounded-xl placeholder:gray-900 text-sm px-4 py-2 border-none"
+                                class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
                                 placeholder="describe your idea"></textarea>
                         </div>
 
                         <div class="flex items-center justify-between gap-3">
                             <button type="button"
-                                class="flex items-center justify-center w-1/2 h-11 bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-100 ease-in px-4 py-3">
-                                <svg class="text-gray-500 w-5 transform -rotate-45" fill="none" viewBox="0 0 24 24"
+                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold transition duration-100 ease-in bg-gray-200 border border-gray-200 h-11 rounded-xl hover:border-gray-400">
+                                <svg class="w-5 text-gray-500 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
@@ -87,7 +81,7 @@
                             </button>
 
                             <button type="submit"
-                                class="flex items-center justify-center w-1/2 h-11 bg-blue hover:bg-blueHover font-semibold text-white rounded-xl border border-gray-200 hover:border-gray-400 transition duration-100 ease-in px-4 py-3">
+                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
                                 Submit
                             </button>
                         </div>
@@ -97,31 +91,31 @@
 
             <div class="w-175">
                 <nav class="flex items-center justify-between text-xs">
-                    <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
+                    <ul class="flex pb-3 space-x-10 font-semibold uppercase border-b-4">
                         <li>
-                            <a href="/" class="border-b-4 pb-3 border-blue">all ideas (87)</a>
+                            <a href="/" class="pb-3 border-b-4 border-blue">all ideas (87)</a>
                         </li>
                         <li>
                             <a href="/"
-                                class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">considering
+                                class="pb-3 text-gray-400 transition duration-100 ease-in border-b-4 hover:border-blue">considering
                                 (6)</a>
                         </li>
                         <li>
                             <a href="/"
-                                class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">In
+                                class="pb-3 text-gray-400 transition duration-100 ease-in border-b-4 hover:border-blue">In
                                 progress (1)</a>
                         </li>
                     </ul>
 
-                    <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
+                    <ul class="flex pb-3 space-x-10 font-semibold uppercase border-b-4">
                         <li>
                             <a href="/"
-                                class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">
+                                class="pb-3 text-gray-400 transition duration-100 ease-in border-b-4 hover:border-blue">
                                 implemented(10)</a>
                         </li>
                         <li>
                             <a href="/"
-                                class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">closed
+                                class="pb-3 text-gray-400 transition duration-100 ease-in border-b-4 hover:border-blue">closed
                                 (55)</a>
                         </li>
 
