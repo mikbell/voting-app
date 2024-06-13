@@ -16,7 +16,7 @@ new class extends Component {
 }; ?>
 
 
-<div>
+<div class="flex items-center mt-2 md:mt-0">
     @if (Route::has('login'))
         @auth
             <button wire:click="logout" class="w-full text-start">
@@ -36,4 +36,9 @@ new class extends Component {
             @endif
         @endauth
     @endif
+
+    <a href="/">
+        <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
+            alt="" class="w-10 h-10 rounded-full">
+    </a>
 </div>

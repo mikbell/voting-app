@@ -21,7 +21,7 @@
 <body class="font-sans text-sm antialiased text-gray-900">
     <div class="min-h-screen bg-background">
 
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col items-center justify-between px-8 py-4 md:flex-row">
             <a href="">
                 <img src="{{ asset('img/logo.svg') }}" alt="">
             </a>
@@ -29,68 +29,16 @@
 
             <div class="flex items-center">
                 <livewire:layout.navigation />
-
-                <a href="/">
-                    <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
-                        alt="" class="w-10 h-10 rounded-full">
-                </a>
             </div>
         </header>
 
-        <main class="container flex mx-auto max-w-custom">
-            <div class="mr-5 w-70">
-                <div class="mt-16 bg-white border-2 border-blue rounded-xl idea-form">
-                    <div class="px-6 py-2 pt-6 text-center ">
-                        <h3 class="text-base font-semibold">Add an idea</h3>
-                        <p class="mt-4 text-xs">Let us know what you would like and we'll take a look over!</p>
-                    </div>
-
-                    <form action="#" class="px-4 py-6 space-y-4">
-                        <div>
-                            <input type="text"
-                                class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
-                                placeholder="Your Idea">
-                        </div>
-                        <div>
-
-                            <select name="category_add" id="category_add"
-                                class="w-full px-4 py-2 text-sm bg-gray-100 border-none shadow rounded-xl">
-                                <option value="category 1">category 1</option>
-                                <option value="category 2">category 2</option>
-                                <option value="category 3">category 3</option>
-                                <option value="category 4">category 4</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <textarea name="idea" id="idea" cols="30" rows="4"
-                                class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
-                                placeholder="describe your idea"></textarea>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-3">
-                            <button type="button"
-                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold transition duration-100 ease-in bg-gray-200 border border-gray-200 h-11 rounded-xl hover:border-gray-400">
-                                <svg class="w-5 text-gray-500 transform -rotate-45" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
-                                </svg>
-
-                                Attach
-                            </button>
-
-                            <button type="submit"
-                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
+        <main class="container flex flex-col gap-5 mx-auto md:flex-row max-w-custom">
+            <div class="mx-auto md:mx-0 w-70">
+                <x-idea-form />
             </div>
 
-            <div class="w-175">
-                <nav class="flex items-center justify-between text-xs">
+            <div class="w-full px-2 md:px-0 md:w-175">
+                <nav class="items-center justify-between hidden text-xs md:flex">
                     <ul class="flex pb-3 space-x-10 font-semibold uppercase border-b-4">
                         <li>
                             <a href="/" class="pb-3 border-b-4 border-blue">all ideas (87)</a>
