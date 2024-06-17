@@ -1,4 +1,14 @@
-<div class="flex transition duration-100 ease-in bg-white cursor-pointer idea-container rounded-xl hover:shadow-card">
+<div x-data
+    @click = "
+        const target = $event.target.tagName.toLowerCase()
+
+        const ignores = ['a', 'svg', 'path', 'button']
+
+        if(! ignores.includes(target)) {
+            $event.target.closest('.idea-container').querySelector('.idea-link').click()
+        }
+    "
+    class="flex transition duration-100 ease-in bg-white cursor-pointer idea-container rounded-xl hover:shadow-card">
     <div class="hidden px-5 py-8 border-r border-gray-100 md:block">
         <div class="text-center">
             <div class="text-2xl font-semibold">12</div>
@@ -14,7 +24,7 @@
     <div class="flex flex-col flex-1 px-2 py-6 md:flex-row">
         <div class="flex-none mx-4 md:mx-0">
             <a href="/">
-                <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
+                <img src="{{$idea->user->getAvatar()}}"
                     alt="avatar" class="w-14 h-14 rounded-xl">
             </a>
         </div>
@@ -22,35 +32,30 @@
         <div class="flex flex-col justify-between w-full mx-4">
             <div>
                 <h4 class="mt-2 text-xl font-semibold md:mt-0">
-                    <a wire:navigate href="/idea" class="hover:underline">Title</a>
+                    <a wire:navigate href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">
+                        {{ $idea->title }}
+                    </a>
                 </h4>
                 <div class="mt-2 text-gray-500 line-clamp-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laboriosam corporis culpa autem
-                    cumque mollitia repellat minus, veniam eum, eligendi itaque! Ipsum sit repellendus laborum
-                    pariatur excepturi voluptatem vel accusamus et recusandae, maxime placeat iusto perferendis
-                    voluptate molestiae voluptatibus modi quos harum quo fugit? Unde repellendus dolorum officia
-                    quia maiores ut debitis perferendis? Aspernatur optio expedita at quam quidem non laboriosam,
-                    deserunt quas amet. Molestiae magnam velit ipsa id accusamus, veritatis distinctio natus
-                    possimus est nobis sunt sequi eos itaque. At voluptates ipsa quia error atque rerum soluta
-                    laudantium consequuntur reprehenderit omnis, ab quisquam obcaecati explicabo, culpa velit,
-                    minima enim?
+                    {{ $idea->description }}
                 </div>
             </div>
 
 
             <div class="flex flex-col justify-between mt-6 md:items-center md:flex-row">
                 <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
-                    <div>10 hours ago</div>
+                    <div> {{ $idea->created_at->diffForHumans() }}
+                    </div>
                     <div>&bull;</div>
-                    <div>Category</div>
+                    <div>{{$idea->category->name}}</div>
                     <div>&bull;</div>
                     <div class="text-gray-900">4 Comments</div>
                 </div>
 
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
                     <div
-                        class="flex items-center justify-center px-4 py-2 font-bold leading-none text-center transition duration-100 ease-in bg-gray-200 rounded-full text-xxs w-28 h-7">
-                        Open</div>
+                        class="{{$idea->status->classes}} flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
+                        {{$idea->status->name}}</div>
                     <x-dropdown :align="'left'" :width="'44'">
                         <x-slot name="trigger">
                             <button

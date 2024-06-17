@@ -1,42 +1,33 @@
 <x-app-layout>
-    <div class="flex items-center px-4 py-2 sm:px-6">
+    <a wire:navigate href="/" class="flex items-center font-semibold">
         <svg class="w-4 sm:w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
-        <a wire:navigate href="/" class="ml-2 font-semibold sm:ml-4">Back</a>
-    </div>
+        Back
+    </a>
 
     <div class="flex flex-col mt-6 bg-white idea-container rounded-xl sm:flex-row">
 
         <div class="flex flex-col flex-1 px-4 py-6 md:flex-row">
             <div class="flex-none">
                 <a href="/">
-                    <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
-                        alt="avatar" class="w-14 h-14 rounded-xl">
+                    <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
                 </a>
             </div>
 
             <div class="w-full mx-2 md:mx-4">
                 <h4 class="text-xl font-semibold">
-                    <a href="/idea" class="hover:underline">Title</a>
+                    {{ $idea->title }}
                 </h4>
                 <div class="mt-3 text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laboriosam corporis culpa autem
-                    cumque mollitia repellat minus, veniam eum, eligendi itaque! Ipsum sit repellendus laborum
-                    pariatur excepturi voluptatem vel accusamus et recusandae, maxime placeat iusto perferendis
-                    voluptate molestiae voluptatibus modi quos harum quo fugit? Unde repellendus dolorum officia
-                    quia maiores ut debitis perferendis? Aspernatur optio expedita at quam quidem non laboriosam,
-                    deserunt quas amet. Molestiae magnam velit ipsa id accusamus, veritatis distinctio natus
-                    possimus est nobis sunt sequi eos itaque. At voluptates ipsa quia error atque rerum soluta
-                    laudantium consequuntur reprehenderit omnis, ab quisquam obcaecati explicabo, culpa velit,
-                    minima enim?
+                    {{ $idea->description }}
                 </div>
 
                 <div class="flex flex-col justify-between mt-6 md:flex-row sm:flex-row">
                     <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
-                        <div class="hidden text-gray-900 md:block">John Doe</div>
+                        <div class="hidden text-gray-900 md:block">{{ $idea->user->name }}</div>
                         <div class="hidden md:block ">&bull;</div>
-                        <div>10 hours ago</div>
+                        <div>{{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>Category</div>
                         <div>&bull;</div>
@@ -45,9 +36,8 @@
 
                     <div class="flex items-center gap-2 mt-4 sm:mt-0">
                         <div
-                            class="flex items-center justify-center px-4 py-2 font-bold leading-none text-center transition duration-100 ease-in bg-gray-200 rounded-full text-xxs w-28 h-7">
-                            Open
-                        </div>
+                            class="{{ $idea->status->classes }}  flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
+                            {{ $idea->status->name }}</div>
                         <x-dropdown :align="'right'" :width="'44'">
                             <x-slot name="trigger">
                                 <button
