@@ -1,10 +1,10 @@
 <div class="relative flex bg-white comment-container is-admin rounded-xl ">
     <div class="flex flex-1 px-4 py-6">
         <div class="flex-none">
-            <a href="/">
+            <x-link href="/">
                 <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109"
                     alt="avatar" class="w-14 h-14 rounded-xl">
-            </a>
+            </x-link>
         </div>
 
         <div class="w-full mx-4">

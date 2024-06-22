@@ -11,30 +11,35 @@
     class="flex transition duration-100 ease-in bg-white cursor-pointer idea-container rounded-xl hover:shadow-card">
     <div class="hidden px-5 py-8 border-r border-gray-100 md:block">
         <div class="text-center">
-            <div class="text-2xl font-semibold">12</div>
+            <div class="text-2xl font-semibold @if ($hasVoted) text-blue @endif">{{ $votesCount }}
+            </div>
             <div class="text-gray-500">votes</div>
         </div>
 
         <div class="mt-8">
-            <button
-                class="w-20 px-4 py-3 font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 text-xxs rounded-xl">Vote</button>
+            @if ($hasVoted)
+                <button wire:click.prevent="vote"
+                    class="w-20 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bg-bluehover hover:border-bluehover rounded-xl">Voted</button>
+            @else
+                <button wire:click.prevent="vote"
+                    class="w-20 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>
+            @endif
         </div>
     </div>
 
     <div class="flex flex-col flex-1 px-2 py-6 md:flex-row">
         <div class="flex-none mx-4 md:mx-0">
-            <a href="/">
-                <img src="{{$idea->user->getAvatar()}}"
-                    alt="avatar" class="w-14 h-14 rounded-xl">
-            </a>
+            <x-link href="/">
+                <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
+            </x-link>
         </div>
 
         <div class="flex flex-col justify-between w-full mx-4">
             <div>
                 <h4 class="mt-2 text-xl font-semibold md:mt-0">
-                    <a wire:navigate href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">
+                    <x-link href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">
                         {{ $idea->title }}
-                    </a>
+                    </x-link>
                 </h4>
                 <div class="mt-2 text-gray-500 line-clamp-3">
                     {{ $idea->description }}
@@ -47,15 +52,15 @@
                     <div> {{ $idea->created_at->diffForHumans() }}
                     </div>
                     <div>&bull;</div>
-                    <div>{{$idea->category->name}}</div>
+                    <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
                     <div class="text-gray-900">4 Comments</div>
                 </div>
 
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
                     <div
-                        class="{{$idea->status->classes}} flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
-                        {{$idea->status->name}}</div>
+                        class="{{ $idea->status->classes }} flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
+                        {{ $idea->status->name }}</div>
                     <x-dropdown :align="'left'" :width="'44'">
                         <x-slot name="trigger">
                             <button
@@ -76,11 +81,19 @@
 
                 <div class="flex items-center mt-4 md:hidden md:mt-0">
                     <div class="h-10 px-4 pr-4 text-center bg-gray-100 rounded-xl">
-                        <div class="text-sm font-semibold leading-none">12</div>
-                        <div class="font-semibold text-gray-400 text-xxs leding-none">Votes</div>
+                        <div
+                            class="text-xl font-semibold leading-snug @if ($hasVoted) text-blue @endif">
+                            {{ $votesCount }}</div>
+                        <div class="text-sm leading-none text-gray-400">votes</div>
                     </div>
-                    <button
-                        class="w-20 px-4 py-3 -mx-5 font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 text-xxs rounded-xl">Vote</button>
+                    @if ($hasVoted)
+                        <button wire:click.prevent="vote"
+                            class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bg-bluehover hover:border-bluehover rounded-xl">Voted</button>
+                    @else
+                        <button wire:click.prevent="vote"
+                            class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>
+                    @endif
+
                 </div>
             </div>
         </div>

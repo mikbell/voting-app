@@ -21,7 +21,7 @@ export default {
                 gray: colors.gray,
                 background: "#f7f8fc",
                 blue: "#328af1",
-                blueHover: "#2879bd",
+                bluehover: "#2879bd",
                 yellow: "#ffc73c",
                 red: "#ec454f",
                 green: "#1aab8b",

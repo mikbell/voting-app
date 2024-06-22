@@ -4,9 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Idea;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -50,6 +51,11 @@ class User extends Authenticatable
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
+    }
+
+    public function votes(): MorphToMany
+    {
+        return $this->MorphToMany(Idea::class, 'votable');
     }
 
     public function getAvatar(): string

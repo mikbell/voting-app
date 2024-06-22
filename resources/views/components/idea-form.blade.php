@@ -13,8 +13,8 @@
             <livewire:create-idea/>
         @else
             <div class="my-6 text-center">
-                <a href="{{ route('login') }}" class="px-4 py-3 text-white bg-blue rounded-xl">Login</a>
-                <a href="{{ route('register') }}" class="px-4 py-3 bg-gray-200 rounded-xl">Register</a>
+                <x-link href="{{ route('login') }}" class="px-4 py-3 text-white bg-blue rounded-xl">Login</x-link>
+                <x-link href="{{ route('register') }}" class="px-4 py-3 bg-gray-200 rounded-xl">Register</x-link>
             </div>
         @endauth
 
