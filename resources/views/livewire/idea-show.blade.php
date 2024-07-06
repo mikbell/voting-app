@@ -15,51 +15,53 @@
                 <div class="mt-3 text-gray-500">
                     {{ $idea->description }}
                 </div>
+                <div class="mt-6 font-semibold">
+                    <div class="hidden text-gray-900 md:block">{{ $idea->user->name }}</div>
 
-                <div class="flex flex-col justify-between mt-6 md:flex-row sm:flex-row">
-                    <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
-                        <div class="hidden text-gray-900 md:block">{{ $idea->user->name }}</div>
-                        <div class="hidden md:block ">&bull;</div>
-                        <div>{{ $idea->created_at->diffForHumans() }}</div>
-                        <div>&bull;</div>
-                        <div>Category</div>
-                        <div>&bull;</div>
-                        <div class="text-gray-900">4 Comments</div>
-                    </div>
+                    <div class="flex flex-col justify-between md:flex-row sm:flex-row">
+                        <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
+                            <div>{{ $idea->created_at->diffForHumans() }}</div>
+                            <div>&bull;</div>
+                            <div>Category</div>
+                            <div>&bull;</div>
+                            <div class="text-gray-900">4 Comments</div>
+                        </div>
 
-                    <div class="flex items-center gap-2 mt-4 sm:mt-0">
-                        <div
-                            class="{{ $idea->status->classes }}  flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
-                            {{ $idea->status->name }}</div>
-                        <x-dropdown :align="'right'" :width="'44'">
-                            <x-slot name="trigger">
-                                <button
-                                    class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
-                                    <svg class="fill-gray-400" width="24" height="6">
-                                        <path
-                                            d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z">
-                                    </svg>
-                                </button>
-                            </x-slot>
+                        <div class="flex items-center gap-2 mt-4 sm:mt-0">
+                            <div
+                                class="{{ $idea->status->classes }}  flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
+                                {{ $idea->status->name }}</div>
+                            <x-dropdown :align="'right'" :width="'44'">
+                                <x-slot name="trigger">
+                                    <button
+                                        class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
+                                        <svg class="fill-gray-400" width="24" height="6">
+                                            <path
+                                                d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z">
+                                        </svg>
+                                    </button>
+                                </x-slot>
 
-                            <x-slot name="content">
-                                <x-dropdown-link href="#">Mark as spam</x-dropdown-link>
-                                <x-dropdown-link href="#">Delete post</x-dropdown-link>
-                            </x-slot>
-                        </x-dropdown>
+                                <x-slot name="content">
+                                    <x-dropdown-link href="#">Mark as spam</x-dropdown-link>
+                                    <x-dropdown-link href="#">Delete post</x-dropdown-link>
+                                </x-slot>
+                            </x-dropdown>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
+
     <div class="flex flex-col items-center justify-between mt-6 space-y-4 sm:flex-row sm:space-y-0 buttons-container">
         <div class="flex items-center space-x-4">
             <x-dropdown :width="'104'" :align="'top'">
                 <x-slot name="trigger">
                     <button
-                        class="flex items-center justify-center w-32 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
+                        class="flex items-center justify-center w-32 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-bluehover rounded-xl hover:border-gray-400">
                         Reply
                     </button>
                 </x-slot>
@@ -74,7 +76,7 @@
 
                         <div class="flex items-center space-x-3">
                             <button type="button"
-                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
+                                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11  bg-blue hover:bg-bluehover rounded-xl hover:border-gray-400">
                                 Post Comment
                             </button>
 
@@ -162,7 +164,7 @@
                             </button>
 
                             <button type="button"
-                                class="flex items-center justify-center px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
+                                class="flex items-center justify-center px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11  hover:hover rounded-xl hover:border-gray-400">
                                 Update
                             </button>
                         </div>
@@ -185,7 +187,7 @@
             <div>
                 @if ($hasVoted)
                     <button wire:click.prevent="vote"
-                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bg-bluehover hover:border-bluehover rounded-xl">Voted</button>
+                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue  hover:hover hover:border-bluehover rounded-xl">Voted</button>
                 @else
                     <button wire:click.prevent="vote"
                         class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>

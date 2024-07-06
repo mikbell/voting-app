@@ -6,8 +6,7 @@ use App\Models\Idea;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Vote;
-use App\Models\Status;
-use App\Models\Category;
+use App\Models\Login;
 use Illuminate\Database\Seeder;
 use Database\Seeders\StatusSeeder;
 use Database\Seeders\CategorySeeder;
@@ -22,26 +21,55 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(StatusSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
+        // Numero di utenti da creare
+        $numberOfUsers = 15;
+        // Numero di login per utente
+        $numberOfLoginsPerUser = 500;
+
+        // Creare gli utenti
+        $users = User::factory($numberOfUsers)->create();
+
+        // Creare il numero specificato di login per ogni utente
+        $users->each(function ($user) use ($numberOfLoginsPerUser) {
+            for ($i = 0; $i < $numberOfLoginsPerUser; $i++) {
+                Login::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+            }
+        });
+
+        // Creare un utente con credenziali specifiche
+        $admin = User::factory()->create([
+            'name' => 'admin',
             'email' => 'a@a.com',
-            'password' => 'asdf'
+            'password' => bcrypt('asdf'), // Ricorda di usare bcrypt per la password
         ]);
 
-        User::factory(19)->create();
+        // Creare il numero specificato di login per l'utente speciale
+        for ($i = 0; $i < $numberOfLoginsPerUser; $i++) {
+            Login::factory()->create([
+                'user_id' => $admin->id,
+            ]);
+        }
 
-        Idea::factory(100)->create();
+        // Creare le idee, assicurandosi che user_id siano validi
+        $users->each(function ($user) {
+            Idea::factory(2000 / 16)->create(['user_id' => $user->id]);
+        });
 
-        foreach (range(1, 20) as $user_id) {
-            foreach (range(1, 100) as $idea_id) {
+        Idea::factory(2000 / 16)->create(['user_id' => $admin->id]);
+
+        // Creare voti per le idee
+        foreach (range(1, $numberOfUsers + 1) as $user_id) {
+            foreach (range(1, 2000) as $idea_id) {
                 if ($idea_id % 2 === 0) {
-
                     Vote::factory()->create([
                         'user_id' => $user_id,
-                        'idea_id' => $idea_id
+                        'idea_id' => $idea_id,
                     ]);
                 }
             }
         }
     }
+
 }

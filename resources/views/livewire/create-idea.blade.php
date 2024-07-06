@@ -42,7 +42,7 @@
             </button>
 
             <button type="submit"
-                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-blueHover rounded-xl hover:border-gray-400">
+                class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11  hover:Hover rounded-xl hover:border-gray-400">
                 Submit
             </button>
         </div>

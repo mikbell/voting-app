@@ -10,11 +10,11 @@
         </div>
 
         @auth
-            <livewire:create-idea/>
+            <livewire:create-idea />
         @else
-            <div class="my-6 text-center">
-                <x-link href="{{ route('login') }}" class="px-4 py-3 text-white bg-blue rounded-xl">Login</x-link>
-                <x-link href="{{ route('register') }}" class="px-4 py-3 bg-gray-200 rounded-xl">Register</x-link>
+            <div class="my-6 space-x-2 text-center">
+                <x-link href="{{ route('login') }}" class="px-4 py-2 text-white bg-blue hover:bg-bluehover rounded-xl transition duration-150">Login</x-link>
+                <x-link href="{{ route('register') }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-xl transition duration-150">Register</x-link>
             </div>
         @endauth
 

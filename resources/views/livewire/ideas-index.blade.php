@@ -9,6 +9,6 @@
     </div> {{-- end ideas-container --}}
 
     <div>
-        {{ $ideas->links() }}
+        {{ $ideas->appends(request()->query())->links() }}
     </div>
 </div>

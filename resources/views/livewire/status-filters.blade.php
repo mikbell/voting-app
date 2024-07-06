@@ -3,18 +3,20 @@
         <li>
             <a wire:click.prevent="setStatus('All')" href="#"
                 class="pb-3 border-b-4 hover:border-blue @if ($status === 'All') border-blue text-gray-900 @endif">all
-                ideas
-                (87)</a>
+                ideas ({{ $statusCount['all_statuses'] }})
+            </a>
         </li>
         <li>
             <a wire:click.prevent="setStatus('Considering')" href="#"
-                class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'Considering') border-blue text-gray-900 @endif">considering
-                (6)</a>
+                class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'Considering') border-blue text-gray-900 @endif">
+                considering ({{ $statusCount['open'] }})
+            </a>
         </li>
         <li>
             <a wire:click.prevent="setStatus('In Progress')" href="#"
                 class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'In Progress') border-blue text-gray-900 @endif">In
-                progress (1)</a>
+                progress ({{ $statusCount['considering'] }})
+            </a>
         </li>
     </ul>
 
@@ -22,12 +24,14 @@
         <li>
             <a wire:click.prevent="setStatus('Implemented')" href="#"
                 class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'Implemented') border-blue text-gray-900 @endif">
-                implemented(10)</a>
+                implemented ({{ $statusCount['in_progress'] }})
+            </a>
         </li>
         <li>
             <a wire:click.prevent="setStatus('Closed')" href="#"
-                class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'Closed') border-blue text-gray-900 @endif">closed
-                (55)</a>
+                class="pb-3 transition duration-100 ease-in border-b-4 hover:border-blue @if ($status === 'Closed') border-blue text-gray-900 @endif">
+                closed ({{ $statusCount['closed'] }})
+            </a>
         </li>
 
     </ul>

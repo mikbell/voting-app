@@ -45,9 +45,10 @@
     border: 7px solid white;
     box-shadow: 4px 4px 15px 0 rgba(36, 37, 38, 0.08);
     left: -58px;
-    background: theme("colors.purple");
+    background-color: theme('colors.purple');
     opacity: 1;
 }
+
 
 .is-admin {
     border-width: 1px;

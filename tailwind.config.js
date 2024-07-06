@@ -1,6 +1,5 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
-import colors from "tailwindcss/colors";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -13,12 +12,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                transparent: "transparent",
-                current: "currentColor",
-
-                black: colors.black,
-                white: colors.white,
-                gray: colors.gray,
                 background: "#f7f8fc",
                 blue: "#328af1",
                 bluehover: "#2879bd",
@@ -34,7 +27,7 @@ export default {
                 22: "5.5rem",
                 44: "11rem",
                 70: "17.5rem",
-                76: "19",
+                76: "19rem",
                 104: "26rem",
                 175: "43.75rem",
             },

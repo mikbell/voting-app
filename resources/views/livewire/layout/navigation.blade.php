@@ -19,6 +19,9 @@ new class extends Component {
     <x-link href="/">
         <img src="{{ asset('img/logo.svg') }}" alt="">
     </x-link>
+    <x-nav-link href="{{ route('user.index') }}">
+        Users
+    </x-nav-link>
 
 
     <div class="flex items-center">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Idea;
+use App\Models\Login;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,13 +59,32 @@ class User extends Authenticatable
         return $this->MorphToMany(Idea::class, 'votable');
     }
 
+    public function logins(): HasMany
+    {
+        return $this->HasMany(Login::class);
+    }
+
     public function getAvatar(): string
     {
         return
             'https://www.gravatar.com/avatar/'
-            .md5($this->email)
-            .'?s200'
-            .'&d=robohash';
+            . md5($this->email)
+            . '?s200'
+            . '&d=robohash';
     }
 
+    public function lastLogin()
+    {
+        return $this->belongsTo(Login::class);
+    }
+
+    public function scopeWithLastLogin($query)
+    {
+        $query->addSelect([
+            'last_login_id' => Login::select('id')
+                ->whereColumn('user_id', 'users.id')
+                ->latest()
+                ->take(1)
+        ])->with('lastLogin');
+    }
 }
