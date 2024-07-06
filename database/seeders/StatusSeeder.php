@@ -20,15 +20,15 @@ class StatusSeeder extends Seeder
             ],
             [
                 'name' => 'Considering',
-                'classes' => 'bg-green text-white'
-            ],
-            [
-                'name' => 'In Progress',
                 'classes' => 'bg-purple text-white'
             ],
             [
-                'name' => 'Implemented',
+                'name' => 'In Progress',
                 'classes' => 'bg-yellow text-white'
+            ],
+            [
+                'name' => 'Implemented',
+                'classes' => 'bg-green text-white'
             ],
             [
                 'name' => 'Closed',

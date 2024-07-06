@@ -18,13 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CategorySeeder::class);
-        $this->call(StatusSeeder::class);
+        $this->call([CategorySeeder::class, StatusSeeder::class]);
 
         // Numero di utenti da creare
-        $numberOfUsers = 15;
+        $numberOfUsers = 50;
         // Numero di login per utente
-        $numberOfLoginsPerUser = 500;
+        $numberOfLoginsPerUser = 100;
 
         // Creare gli utenti
         $users = User::factory($numberOfUsers)->create();

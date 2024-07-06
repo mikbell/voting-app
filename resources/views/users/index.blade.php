@@ -1,4 +1,6 @@
 <x-app-layout>
+    <input type="search" placeholder="find a user"
+        class="w-1/2 px-4 py-2 pl-8 bg-white border-none shadow rounded-xl placeholder-text-gray-900 mb-6">
     <table class="w-full">
         <thead class="bg-gray-200 font-semibold border-b border-gray-200">
             <tr>

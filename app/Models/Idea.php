@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Idea extends Model
 {
     use HasFactory, Sluggable;
-    const PAGINATION_COUNT = 10;
+    const PAGINATION_COUNT = 30;
 
     protected $guarded = [];
 
@@ -75,6 +75,5 @@ class Idea extends Model
             ->first();
 
         $voteToDelete->delete();
-
     }
 }
