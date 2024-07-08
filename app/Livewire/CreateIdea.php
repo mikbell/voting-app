@@ -35,7 +35,7 @@ class CreateIdea extends Component
             session()->flash('success', 'Idea created successfully!');
             $this->reset();
 
-            return redirect()->route('index');
+            return redirect()->route('idea.index');
         }
 
         abort(Response::HTTP_FORBIDDEN);

@@ -8,6 +8,8 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
 
+    <livewire:edit-idea/>
+
     <div class="relative pt-4 my-8 space-y-6 comments-container sm:ml-22">
         <x-comment />
         <x-admin-comment />

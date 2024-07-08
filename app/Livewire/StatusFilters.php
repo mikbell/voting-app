@@ -29,7 +29,7 @@ class StatusFilters extends Component
         $this->dispatch('queryStringUpdatedStatus', $this->status);
 
         if ($this->getPreviousRouteName() === 'idea.show') {
-            return redirect(route('index', [
+            return redirect(route('idea.index', [
                 'status' => $this->status,
             ]));
         }

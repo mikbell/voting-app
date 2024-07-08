@@ -46,11 +46,10 @@
                 </div>
             </div>
 
-            <div class="mt-6">
+            <div class="mt-6 font-semibold">
                 <div class="hidden text-gray-900 md:block">{{ $idea->user->name }}</div>
                 <div class="flex flex-col justify-between md:items-center md:flex-row">
-                    <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
-
+                    <div class="flex items-center gap-2 text-xs  text-gray-400">
                         <div> {{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>{{ $idea->category->name }}</div>
@@ -62,22 +61,6 @@
                         <div
                             class="{{ $idea->status->classes }} flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
                             {{ $idea->status->name }}</div>
-                        <x-dropdown :align="'left'" :width="'44'">
-                            <x-slot name="trigger">
-                                <button
-                                    class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
-                                    <svg class="fill-gray-400" width="24" height="6">
-                                        <path
-                                            d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z">
-                                    </svg>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <x-dropdown-link href="#">Mark as spam</x-dropdown-link>
-                                <x-dropdown-link href="#">Delete post</x-dropdown-link>
-                            </x-slot>
-                        </x-dropdown>
                     </div>
 
                     <div class="flex items-center mt-4 md:hidden md:mt-0">

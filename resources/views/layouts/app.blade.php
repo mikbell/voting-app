@@ -15,7 +15,9 @@
         rel="stylesheet">
 
     <!-- Scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body class="font-sans text-sm antialiased text-gray-900">
@@ -29,7 +31,7 @@
             </div>
 
             <div class="w-full px-2 md:px-0 md:w-175">
-                <livewire:status-filters/>
+                <livewire:status-filters />
 
                 <div class="my-8">
                     {{ $slot }}
@@ -39,6 +41,8 @@
             <div class="w-24"></div>
         </main>
     </div>
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

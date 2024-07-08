@@ -87,4 +87,11 @@ class User extends Authenticatable
                 ->take(1)
         ])->with('lastLogin');
     }
+
+    public function isAdmin()
+    {
+        return in_array($this->email, [
+            'a@a.com'
+        ]);
+    }
 }
