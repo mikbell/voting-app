@@ -34,13 +34,13 @@
     }
 @endphp
 
-<div class="relative" x-data="{ open: false }"x-init="$wire.on('statusWasUpdated', () => { isOpen = false })" @click.outside="open = false"
-    @close.stop="open = false">
-    <div @click="open = ! open">
+<div class="relative" x-data="{ isOpen: false }" @click.outside="isOpen = false"
+    @close.stop="isOpen = false">
+    <div @click="isOpen = ! isOpen">
         {{ $trigger }}
     </div>
 
-    <div x-show.transition.origin.top.left.duration.150ms.150ms="open"
+    <div x-show.transition.origin.top.left.duration.150ms.150ms="isOpen"
         x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95"
         x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"

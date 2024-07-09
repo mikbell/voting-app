@@ -15,7 +15,7 @@ class CreateIdea extends Component
 
     public $rules = [
         'title' => 'required|min:4',
-        'category' => 'required|exists:categories,id|min:1',
+        'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
@@ -23,7 +23,7 @@ class CreateIdea extends Component
     {
         if (auth()->check()) {
             $this->validate();
-            
+
             Idea::create([
                 'user_id' => auth()->id(),
                 'category_id' => $this->category,

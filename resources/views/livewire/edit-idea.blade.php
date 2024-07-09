@@ -1,33 +1,17 @@
-<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <!--
-      Background backdrop, show/hide based on modal state.
-  
-      Entering: "ease-out duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+<div x-cloak x-data="{ isOpen: false }" x-show="isOpen" @keydown.escape.window="isOpen = false"
+    @custom-show-edit-modal.window="isOpen = true" x-init="$wire.on('ideaWasUpdated', () => { isOpen = false })" class="relative z-10"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+    <div x-show="isOpen" x-transition.opacity class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true">
+    </div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex min-h-full items-end justify-center text-center ">
-            <!--
-          Modal panel, show/hide based on modal state.
-  
-          Entering: "ease-out duration-300"
-            From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            To: "opacity-100 translate-y-0 sm:scale-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100 translate-y-0 sm:scale-100"
-            To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        -->
-            <div class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-lg">
+            <div x-show="isOpen" x-transition.origin.bottom.duration.300ms
+                class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-lg">
                 <div class="absolute top-0 right-0 pt-4 pr-4">
-                    <button>
-                        <svg fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <button @click="isOpen = false">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -36,7 +20,7 @@
                     <div class="sm:flex sm:items-start">
                         <div class="text-center w-full">
                             <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Edit Idea</h3>
-                            <form wire:submit.prevent="createIdea" class="px-4 py-6 space-y-4">
+                            <form wire:submit.prevent="updateIdea" class="px-4 py-6 space-y-4">
                                 <div>
                                     <input wire:model.defer="title" type="text"
                                         class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
@@ -80,7 +64,7 @@
 
                                     <button type="submit"
                                         class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bluehover rounded-xl hover:border-gray-400">
-                                        Submit
+                                        Update
                                     </button>
                                 </div>
                             </form>
