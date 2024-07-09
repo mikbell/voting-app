@@ -17,6 +17,7 @@ export default {
                 bluehover: "#2879bd",
                 yellow: "#ffc73c",
                 red: "#ec454f",
+                redhover: "#b8131d",
                 green: "#1aab8b",
                 purple: "#8b60ed",
             },

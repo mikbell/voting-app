@@ -1,6 +1,7 @@
 <div x-cloak x-data="{ isOpen: false }" x-show="isOpen" @keydown.escape.window="isOpen = false"
-    @custom-show-edit-modal.window="isOpen = true" x-init="$wire.on('ideaWasUpdated', () => { isOpen = false })" class="relative z-10"
-    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    @custom-show-edit-modal.window="isOpen = true 
+    nextTick(() => $refs.title.focus())" x-init="$wire.on('ideaWasUpdated', () => { isOpen = false })"
+    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
     <div x-show="isOpen" x-transition.opacity class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true">
     </div>
@@ -16,13 +17,13 @@
                         </svg>
                     </button>
                 </div>
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div @click.outside="isOpen = false" class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="text-center w-full">
                             <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Edit Idea</h3>
                             <form wire:submit.prevent="updateIdea" class="px-4 py-6 space-y-4">
                                 <div>
-                                    <input wire:model.defer="title" type="text"
+                                    <input wire:model.defer="title" x-ref="title" type="text"
                                         class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
                                         placeholder="Your Idea" required />
                                     @error('title')

@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\Idea;
 use Livewire\Component;
 use App\Models\Category;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class EditIdea extends Component
 {

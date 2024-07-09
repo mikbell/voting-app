@@ -19,6 +19,7 @@ class LoginFactory extends Factory
     {
         return [
             'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => now(),
             'ip_address'=> fake()->ipv4()
         ];
     }

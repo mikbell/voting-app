@@ -14,7 +14,9 @@ class UserController extends Controller
             'users' => User::query()
                 ->withLastLogin()
                 ->orderBy('name')
-                ->simplePaginate()
+                ->simplePaginate(),
+            'backUrl' => url()->previous() !== url()->full()
+                ? url()->previous() : route('idea.index')
         ]);
     }
 }

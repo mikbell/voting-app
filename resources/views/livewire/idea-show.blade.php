@@ -45,11 +45,20 @@
                                 <x-slot name="content">
                                     @can('update', $idea)
                                         <x-dropdown-link href="#"
-                                            @click="isOpen = false 
-                                    $dispatch('custom-show-edit-modal')">Edit
-                                            Idea</x-dropdown-link>
+                                            @click.prevent="isOpen = false
+                                        $dispatch('custom-show-edit-modal'
+                                        )">
+                                            Edit Idea
+                                        </x-dropdown-link>
                                     @endcan
-                                    <x-dropdown-link href="#">Delete Idea</x-dropdown-link>
+
+                                    @can('delete', $idea)
+                                        <x-dropdown-link href="#"
+                                            @click.prevent="isOpen = false 
+                                    $dispatch('custom-show-delete-modal')">Delete
+                                            Idea
+                                        </x-dropdown-link>
+                                    @endcan
                                     <x-dropdown-link href="#">Mark as spam</x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
