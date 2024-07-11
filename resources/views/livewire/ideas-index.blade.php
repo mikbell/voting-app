@@ -16,7 +16,12 @@
                 class="w-full px-4 py-2 border-none shadow rounded-xl">
                 <option value="No filters">No filters</option>
                 <option value="Top Voted">Top Voted</option>
-                <option value="My Ideas">My Ideas</option>
+                @auth
+                    <option value="My Ideas">My Ideas</option>
+                @endauth
+                @admin
+                    <option value="Spam">Spam</option>
+                @endadmin
             </select>
         </div>
 

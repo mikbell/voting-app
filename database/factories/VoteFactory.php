@@ -17,8 +17,8 @@ class VoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'idea_id' => fake()->numberBetween(1, 100),
-            'user_id' => fake()->numberBetween(1, 20),
+            'idea_id' => fake()->numberBetween(1, 2000),
+            'user_id' => fake()->numberBetween(1, 500),
         ];
     }
 }

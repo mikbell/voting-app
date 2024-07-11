@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Idea extends Model
 {
     use HasFactory, Sluggable;
-    const PAGINATION_COUNT = 30;
+    const PAGINATION_COUNT = 20;
 
     protected $guarded = [];
 

@@ -12,6 +12,11 @@
                 <h4 class="text-xl font-semibold">
                     {{ $idea->title }}
                 </h4>
+                @admin
+                    @if ($idea->spam_reports > 0)
+                        <div class="text-red text-sm">Spam reports: {{ $idea->spam_reports }}</div>
+                    @endif
+                @endadmin
                 <div class="mt-3 text-gray-500">
                     {{ $idea->description }}
                 </div>
@@ -22,7 +27,7 @@
                         <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
                             <div>{{ $idea->created_at->diffForHumans() }}</div>
                             <div>&bull;</div>
-                            <div>Category</div>
+                            <div>{{ $idea->category->name }}</div>
                             <div>&bull;</div>
                             <div class="text-gray-900">4 Comments</div>
                         </div>
@@ -31,38 +36,51 @@
                             <div
                                 class="{{ $idea->status->classes }}  flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
                                 {{ $idea->status->name }}</div>
-                            <x-dropdown :align="'right'" :width="'44'">
-                                <x-slot name="trigger">
-                                    <button
-                                        class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
-                                        <svg class="fill-gray-400" width="24" height="6">
-                                            <path
-                                                d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z">
-                                        </svg>
-                                    </button>
-                                </x-slot>
+                            @auth
+                                <x-dropdown :align="'right'" :width="'44'">
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
+                                            <svg class="fill-gray-400" width="24" height="6">
+                                                <path
+                                                    d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z">
+                                            </svg>
+                                        </button>
+                                    </x-slot>
 
-                                <x-slot name="content">
-                                    @can('update', $idea)
-                                        <x-dropdown-link href="#"
-                                            @click.prevent="isOpen = false
+                                    <x-slot name="content">
+                                        @can('update', $idea)
+                                            <x-dropdown-link href="#"
+                                                @click.prevent="isOpen = false
                                         $dispatch('custom-show-edit-modal'
                                         )">
-                                            Edit Idea
-                                        </x-dropdown-link>
-                                    @endcan
+                                                Edit Idea
+                                            </x-dropdown-link>
+                                        @endcan
 
-                                    @can('delete', $idea)
+                                        @can('delete', $idea)
+                                            <x-dropdown-link href="#"
+                                                @click.prevent="isOpen = false 
+                                    $dispatch('custom-show-delete-modal')">Delete
+                                                Idea
+                                            </x-dropdown-link>
+                                        @endcan
                                         <x-dropdown-link href="#"
                                             @click.prevent="isOpen = false 
-                                    $dispatch('custom-show-delete-modal')">Delete
-                                            Idea
-                                        </x-dropdown-link>
-                                    @endcan
-                                    <x-dropdown-link href="#">Mark as spam</x-dropdown-link>
-                                </x-slot>
-                            </x-dropdown>
+                                    $dispatch('custom-show-mark-as-spam-modal')">Mark
+                                            as spam</x-dropdown-link>
 
+                                        @admin
+                                            @if ($idea->spam_reports > 0)
+                                                <x-dropdown-link href="#"
+                                                    @click.prevent="isOpen = false 
+                                    $dispatch('custom-show-mark-as-not-spam-modal')">Mark
+                                                    as Not Spam</x-dropdown-link>
+                                            @endif
+                                        @endadmin
+                                    </x-slot>
+                                </x-dropdown>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -109,9 +127,9 @@
                 </x-slot>
             </x-dropdown>
 
-            @if (auth()->check() && auth()->user()->isAdmin())
+            @admin
                 <livewire:set-status :idea="$idea" />
-            @endif
+            @endadmin
         </div>
 
         <div class="flex items-center space-x-3">
@@ -123,7 +141,7 @@
             <div>
                 @if ($hasVoted)
                     <button wire:click.prevent="vote"
-                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue  hover:hover hover:border-bluehover rounded-xl">Voted</button>
+                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow bg-blue hover:bg-bluehover rounded-xl">Voted</button>
                 @else
                     <button wire:click.prevent="vote"
                         class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>

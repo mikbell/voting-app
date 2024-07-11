@@ -18,9 +18,9 @@ class LoginFactory extends Factory
     public function definition(): array
     {
         return [
+            'ip_address'=> fake()->ipv4(),
             'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => now(),
-            'ip_address'=> fake()->ipv4()
+            'updated_at' => now()
         ];
     }
 }

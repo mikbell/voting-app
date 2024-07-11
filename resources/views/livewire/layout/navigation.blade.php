@@ -41,7 +41,7 @@ new class extends Component {
                         </x-slot>
 
                         <x-slot name="content">
-                            <button wire:click="logout" class="block px-4 py-2 text-xs text-gray-400">Logout</button>
+                            <x-dropdown-link wire:click="logout" href="#">Logout</x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
 

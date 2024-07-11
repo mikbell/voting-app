@@ -41,6 +41,11 @@
                         {{ $idea->title }}
                     </x-link>
                 </h4>
+                @admin
+                    @if ($idea->spam_reports > 0)
+                        <div class="text-red text-sm">Spam reports: {{ $idea->spam_reports }}</div>
+                    @endif
+                @endadmin
                 <div class="mt-2 text-gray-500 line-clamp-3">
                     {{ $idea->description }}
                 </div>

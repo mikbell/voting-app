@@ -24,7 +24,12 @@ class IdeasIndex extends Component
         'search'
     ];
 
-    protected $listeners = ['queryStringUpdatedStatus'];
+    protected $listeners = ['queryStringUpdatedStatus' => '$refresh'];
+
+    public function mount()
+    {
+        $this->status = request()->status ?? 'All';
+    }
 
     public function updatingCategory()
     {
@@ -71,6 +76,8 @@ class IdeasIndex extends Component
                     return $query->orderByDesc('votes_count');
                 } elseif ($this->filter === 'My Ideas') {
                     return $query->where('user_id', auth()->id());
+                } elseif ($this->filter === 'Spam') {
+                    return $query->where('spam_reports', '>', 0)->orderByDesc('spam_reports');
                 }
             })
             ->when(strlen($this->search) >= 3, function ($query) {
@@ -82,7 +89,7 @@ class IdeasIndex extends Component
                     ->whereColumn('idea_id', 'ideas.id')
             ])
             ->withCount('votes')
-            ->latest('id')
+            ->latest('created_at')
             ->simplePaginate(Idea::PAGINATION_COUNT);
 
         return view('livewire.ideas-index', compact('ideas', 'categories'));

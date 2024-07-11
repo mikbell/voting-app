@@ -23,6 +23,7 @@ class IdeaFactory extends Factory
             'status_id' => fake()->numberBetween(1, 5),
             'title' => ucwords(fake()->words(4, true)),
             'description' => fake()->paragraphs(5, true),
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now')
         ];
     }
 }
