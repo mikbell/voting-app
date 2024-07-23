@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +17,7 @@ class LoginFactory extends Factory
     public function definition(): array
     {
         return [
-            'ip_address'=> fake()->ipv4(),
-            'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => now()
+            'ip_address' => fake()->ipv4(),
         ];
     }
 }

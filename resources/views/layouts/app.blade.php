@@ -41,8 +41,12 @@
             <div class="w-24"></div>
         </main>
     </div>
+
+    @if (session('success'))
+        <x-notification-success :redirect="true" messageToDisplay="{{ session('success') }}" />
+    @endif
+
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

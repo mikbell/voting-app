@@ -35,6 +35,8 @@ class SetStatus extends Component
 
         $this->idea->status_id = $this->status;
         $this->idea->save();
+
+        $this->dispatch('status-was-updated', 'the status was updated');
     }
 
     public function notifyAllVoters()

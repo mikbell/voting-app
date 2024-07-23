@@ -43,10 +43,10 @@
                 </h4>
                 @admin
                     @if ($idea->spam_reports > 0)
-                        <div class="text-red text-sm">Spam reports: {{ $idea->spam_reports }}</div>
+                        <div class="text-sm text-red">Spam reports: {{ $idea->spam_reports }}</div>
                     @endif
                 @endadmin
-                <div class="mt-2 text-gray-500 line-clamp-3">
+                <div class="mt-2 text-gray-500">
                     {{ $idea->description }}
                 </div>
             </div>
@@ -54,12 +54,12 @@
             <div class="mt-6 font-semibold">
                 <div class="hidden text-gray-900 md:block">{{ $idea->user->name }}</div>
                 <div class="flex flex-col justify-between md:items-center md:flex-row">
-                    <div class="flex items-center gap-2 text-xs  text-gray-400">
+                    <div class="flex items-center gap-2 text-xs text-gray-400">
                         <div> {{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>{{ $idea->category->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-900">4 Comments</div>
+                        <div class="text-gray-900">{{$idea->comments_count}} Comments</div>
                     </div>
 
                     <div class="flex items-center gap-2 mt-4 md:mt-0">

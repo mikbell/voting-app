@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +22,17 @@ class IdeaFactory extends Factory
             'status_id' => fake()->numberBetween(1, 5),
             'title' => ucwords(fake()->words(4, true)),
             'description' => fake()->paragraphs(5, true),
-            'created_at' => fake()->dateTimeBetween('-1 year', 'now')
         ];
+    }
+
+    public function existing()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'user_id' => fake()->numberBetween(1, 20),
+                'category_id' =>  fake()->numberBetween(1, 4),
+                'status_id' =>  fake()->numberBetween(1, 5),
+            ];
+        });
     }
 }

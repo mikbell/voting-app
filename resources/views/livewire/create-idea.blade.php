@@ -48,11 +48,11 @@
         </div>
     </form>
 
-    <div class="my-3 font-semibold text-center">
+    {{-- <div class="my-3 font-semibold text-center">
         @if (session('success'))
             <div x-data="{ isVisible: true }" x-init="setTimeout(() => isVisible = false, 3000)" x-show.transition.duration.3000ms="isVisible"
                 class="text-green">
                 {{ session('success') }}</div>
         @endif
-    </div>
+    </div> --}}
 </div>

@@ -1,15 +1,17 @@
 <div x-cloak x-data="{ isOpen: false }" x-show="isOpen" @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window="isOpen = true 
-    nextTick(() => $refs.title.focus())" x-init="$wire.on('ideaWasUpdated', () => { isOpen = false })"
-    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    nextTick(() => $refs.title.focus())"
+    @idea-was-updated.window="
+    isOpen = false" class="relative z-10" aria-labelledby="modal-title" role="dialog"
+    aria-modal="true">
 
-    <div x-show="isOpen" x-transition.opacity class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true">
+    <div x-show="isOpen" x-transition.opacity class="fixed inset-0 transition-opacity bg-gray-500/75" aria-hidden="true">
     </div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center text-center ">
+        <div class="flex items-end justify-center min-h-full text-center ">
             <div x-show="isOpen" x-transition.origin.bottom.duration.300ms
-                class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-lg">
+                class="relative overflow-hidden transition-all transform bg-white rounded-t-xl sm:w-full sm:max-w-lg">
                 <div class="absolute top-0 right-0 pt-4 pr-4">
                     <button @click="isOpen = false">
                         <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -17,9 +19,9 @@
                         </svg>
                     </button>
                 </div>
-                <div @click.outside="isOpen = false" class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div @click.outside="isOpen = false" class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
-                        <div class="text-center w-full">
+                        <div class="w-full text-center">
                             <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Edit Idea</h3>
                             <form wire:submit.prevent="updateIdea" class="px-4 py-6 space-y-4">
                                 <div>
@@ -64,7 +66,7 @@
                                     </button>
 
                                     <button type="submit"
-                                        class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bluehover rounded-xl hover:border-gray-400">
+                                        class="flex items-center justify-center w-1/2 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 bg-blue hover:bluehover rounded-xl hover:border-gray-400">
                                         Update
                                     </button>
                                 </div>

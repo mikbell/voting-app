@@ -40,7 +40,7 @@ class EditIdea extends Component
             'description' => $this->description,
         ]);
 
-        $this->dispatch('ideaWasUpdated');
+        $this->dispatch('idea-was-updated', 'the idea was updated');
     }
     public function render()
     {

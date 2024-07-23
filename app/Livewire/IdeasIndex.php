@@ -12,8 +12,8 @@ use Livewire\WithPagination;
 class IdeasIndex extends Component
 {
     use WithPagination;
-    public $status = "All";
-    public $category = 'All Categories';
+    public $status = 'All';
+    public $category;
     public $filter;
     public $search;
 
@@ -24,11 +24,12 @@ class IdeasIndex extends Component
         'search'
     ];
 
-    protected $listeners = ['queryStringUpdatedStatus' => '$refresh'];
+    protected $listeners = ['queryStringUpdatedStatus'];
 
     public function mount()
     {
         $this->status = request()->status ?? 'All';
+        $this->category = request()->category ?? 'All Categories';
     }
 
     public function updatingCategory()
@@ -63,7 +64,6 @@ class IdeasIndex extends Component
     {
         $statuses = Status::all()->pluck('id', 'name');
         $categories = Category::all();
-
         $ideas = Idea::with('user', 'category', 'status', )
             ->when($this->status && $this->status !== 'All', function ($query) use ($statuses) {
                 return $query->where('status_id', $statuses->get($this->status));
@@ -89,7 +89,8 @@ class IdeasIndex extends Component
                     ->whereColumn('idea_id', 'ideas.id')
             ])
             ->withCount('votes')
-            ->latest('created_at')
+            ->withCount('comments')
+            ->orderByDesc('id')
             ->simplePaginate(Idea::PAGINATION_COUNT);
 
         return view('livewire.ideas-index', compact('ideas', 'categories'));
