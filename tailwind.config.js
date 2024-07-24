@@ -18,7 +18,11 @@ export default {
                 yellow: "#ffc73c",
                 red: "#ec454f",
                 redhover: "#b8131d",
-                green: "#1aab8b",
+                green: {
+                    DEFAULT: "#1aab8b",
+                    50: "#f0fdf4",
+                },
+
                 purple: "#8b60ed",
             },
             maxWidth: {

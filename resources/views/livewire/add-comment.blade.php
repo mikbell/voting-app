@@ -1,6 +1,7 @@
-<x-dropdown :width="'104'" :align="'top'" @comment-was-added.window="isOpen = false">
+<x-dropdown :width="'104'" :align="'top'">
     <x-slot name="trigger">
         <button
+        @click="$nextTick(() => $refs.comment.focus())"
             class="flex items-center justify-center w-32 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-bluehover rounded-xl hover:border-gray-400">
             Reply
         </button>
@@ -10,7 +11,7 @@
         @auth
             <form wire:submit.prevent="addComment" action="#" class="px-4 py-6 space-y-4">
                 <div>
-                    <textarea wire:model="comment" name="post_comment" id="post_comment" cols="30" rows="4"
+                    <textarea x-ref="comment" wire:model="comment" name="post_comment" id="post_comment" cols="30" rows="4"
                         class="w-full px-4 py-2 text-sm placeholder-gray-900 bg-gray-100 border-none rounded-xl"
                         placeholder="Go ahead, don't be shy. Share your thoughts..." required></textarea>
                     @error('comment')

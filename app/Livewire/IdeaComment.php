@@ -8,6 +8,8 @@ use Livewire\Component;
 class IdeaComment extends Component
 {
     public Comment $comment;
+    public $ideaUserId;
+
     
     public function render()
     {

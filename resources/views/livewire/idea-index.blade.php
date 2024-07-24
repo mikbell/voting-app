@@ -46,7 +46,7 @@
                         <div class="text-sm text-red">Spam reports: {{ $idea->spam_reports }}</div>
                     @endif
                 @endadmin
-                <div class="mt-2 text-gray-500">
+                <div class="max-w-md mt-2 text-gray-500 line-clamp-3">
                     {{ $idea->description }}
                 </div>
             </div>

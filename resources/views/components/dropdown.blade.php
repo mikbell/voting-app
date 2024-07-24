@@ -34,8 +34,22 @@
     }
 @endphp
 
-<div class="relative" x-data="{ isOpen: false }" @click.outside="isOpen = false"
-    @close.stop="isOpen = false">
+<div class="relative" x-data="{ isOpen: false, lastComment: null, comments: null }"
+    @comment-was-added.window="
+isOpen = false
+setTimeout(() => {
+    comments = document.querySelectorAll('.comment-container')
+    lastComment = comments[comments.length - 1]
+    lastComment.scrollIntoView({behavior: 'smooth'})
+    lastComment.classList.add('bg-green-50')
+    lastComment.classList.remove('bg-white')
+    setTimeout(() => {
+        lastComment.classList.add('bg-white')
+        lastComment.classList.remove('bg-green-50')
+    }, 5000)
+}, 100)
+"
+    @click.outside="isOpen = false" @status-was-updated.window="isOpen = false" @close.stop="isOpen = false">
     <div @click="isOpen = ! isOpen">
         {{ $trigger }}
     </div>

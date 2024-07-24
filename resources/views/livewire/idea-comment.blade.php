@@ -1,4 +1,4 @@
-<div class="relative flex bg-white comment-container rounded-xl ">
+<div class="relative flex transition duration-500 ease-in-out bg-white comment-container rounded-xl ">
     <div class="flex flex-1 px-4 py-6">
         <div class="flex-none">
             <x-link href="#">
@@ -13,9 +13,13 @@
 
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center gap-2 text-xs font-semibold text-gray-400">
-                    <div class="text-gray-900">{{$comment->user->name}}</div>
+                    <div class="text-gray-900">{{ $comment->user->name }}</div>
                     <div>&bull;</div>
-                    <div>{{$comment->created_at->diffForHumans()}}</div>
+                    @if ($comment->user->id === $ideaUserId)
+                        <div class="px-3 py-1 bg-gray-200 border rounded-full">OP</div>
+                        <div>&bull;</div>
+                    @endif
+                    <div>{{ $comment->created_at->diffForHumans() }}</div>
                 </div>
 
                 <div x-data="{ open: false }">

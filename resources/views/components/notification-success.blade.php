@@ -3,8 +3,7 @@
     'messageToDisplay' => '',
 ])
 
-<div @if ($redirect) 
-        x-data="{ isOpen: true, messageToDisplay: '{{ session('success') }}' }"
+<div @if ($redirect) x-data="{ isOpen: true, messageToDisplay: '{{ session('success') }}' }"
         x-init="setTimeout(() => isOpen = false, 5000)"
     @else
         x-data="{ isOpen: false, messageToDisplay: '{{ $messageToDisplay }}' }"
@@ -34,8 +33,14 @@
         messageToDisplay = $event.detail;
         setTimeout(() => {
         isOpen = false
-        }, 5000)
-    " @endif
+        }, 5000)"
+
+        @comment-was-added.window="
+        isOpen = true
+        messageToDisplay = $event.detail;
+        setTimeout(() => {
+        isOpen = false
+        }, 5000)" @endif
     x-cloak x-show="isOpen" x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform translate-x-8"
     x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-150"
