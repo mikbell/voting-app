@@ -1,7 +1,6 @@
 <x-dropdown :width="'104'" :align="'top'">
     <x-slot name="trigger">
-        <button
-        @click="$nextTick(() => $refs.comment.focus())"
+        <button @click="$nextTick(() => $refs.comment.focus())"
             class="flex items-center justify-center w-32 px-4 py-3 font-semibold text-white transition duration-100 ease-in border border-gray-200 h-11 bg-blue hover:bg-bluehover rounded-xl hover:border-gray-400">
             Reply
         </button>

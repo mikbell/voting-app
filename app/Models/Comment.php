@@ -12,6 +12,7 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $perPage = 10;
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

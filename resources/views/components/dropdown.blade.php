@@ -47,7 +47,7 @@ setTimeout(() => {
         lastComment.classList.add('bg-white')
         lastComment.classList.remove('bg-green-50')
     }, 5000)
-}, 100)
+}, 200)
 "
     @click.outside="isOpen = false" @status-was-updated.window="isOpen = false" @close.stop="isOpen = false">
     <div @click="isOpen = ! isOpen">
