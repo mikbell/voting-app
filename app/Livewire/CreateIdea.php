@@ -32,7 +32,7 @@ class CreateIdea extends Component
                 'description' => $this->description
             ]);
 
-            session()->flash('success', 'Idea created successfully!');
+            session()->flash('success', 'Idea creata correttamente!');
             $this->reset();
 
             return redirect()->route('idea.index');

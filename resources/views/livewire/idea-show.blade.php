@@ -29,7 +29,7 @@
                             <div>&bull;</div>
                             <div>{{ $idea->category->name }}</div>
                             <div>&bull;</div>
-                            <div class="text-gray-900">{{$idea->comments()->count()}} Comments</div>
+                            <div class="text-gray-900">{{ $idea->comments()->count() }} Commenti</div>
                         </div>
 
                         <div class="flex items-center gap-2 mt-4 sm:mt-0">
@@ -37,7 +37,7 @@
                                 class="{{ $idea->status->classes }}  flex items-center justify-center px-4 py-2 font-bold text-center rounded-full text-xxs w-28 h-7">
                                 {{ $idea->status->name }}</div>
                             @auth
-                                <x-dropdown :align="'right'" :width="'44'">
+                                <x-dropdown :align="'left'" :width="'44'">
                                     <x-slot name="trigger">
                                         <button
                                             class="flex items-center px-3 py-2 transition duration-100 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7">
@@ -52,32 +52,32 @@
                                         @can('update', $idea)
                                             <x-dropdown-link href="#"
                                                 @click.prevent="isOpen = false
-                                        $dispatch('custom-show-edit-modal'
+                                        $dispatch('edit-idea-modal'
                                         )">
-                                                Edit Idea
+                                                Modifica
                                             </x-dropdown-link>
                                         @endcan
 
-                                        @can('delete', $idea)
-                                            <x-dropdown-link href="#"
-                                                @click.prevent="isOpen = false 
-                                    $dispatch('custom-show-delete-modal')">Delete
-                                                Idea
-                                            </x-dropdown-link>
-                                        @endcan
+
                                         <x-dropdown-link href="#"
                                             @click.prevent="isOpen = false 
-                                    $dispatch('custom-show-mark-as-spam-modal')">Mark
-                                            as spam</x-dropdown-link>
+                                    $dispatch('mark-as-spam-modal')">Segnala come spam</x-dropdown-link>
 
                                         @admin
                                             @if ($idea->spam_reports > 0)
                                                 <x-dropdown-link href="#"
                                                     @click.prevent="isOpen = false 
-                                    $dispatch('custom-show-mark-as-not-spam-modal')">Mark
-                                                    as Not Spam</x-dropdown-link>
+                                    $dispatch('mark-as-not-spam-modal')">
+                                                    Non Spam</x-dropdown-link>
                                             @endif
                                         @endadmin
+
+                                        @can('delete', $idea)
+                                            <x-dropdown-link href="#"
+                                                @click.prevent="isOpen = false 
+                                $dispatch('delete-modal')">Elimina
+                                            </x-dropdown-link>
+                                        @endcan
                                     </x-slot>
                                 </x-dropdown>
                             @endauth
@@ -107,12 +107,11 @@
             <div>
                 @if ($hasVoted)
                     <button wire:click.prevent="vote"
-                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow bg-blue hover:bg-bluehover rounded-xl">Voted</button>
+                        class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow bg-blue hover:bg-bluehover rounded-xl">Votato</button>
                 @else
                     <button wire:click.prevent="vote"
-                        class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>
+                        class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vota</button>
                 @endif
-
             </div>
         </div>
     </div>

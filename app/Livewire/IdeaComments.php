@@ -17,9 +17,9 @@ class IdeaComments extends Component
   ];
   public function commentWasAdded($id)
   {
-    $this->comments->push(Comment::find($id));
-    $this->dispatchBrowserEvent('comment-was-added', $this->comments->last());
     $this->idea->refresh();
+    $this->comments->push(Comment::find($id));
+    $this->dispatchBrowserEvent('comment-was-added', $this->idea->comments()->last());
     $this->goToPage($this->idea->comments()->paginate()->lastPage());
   }
 

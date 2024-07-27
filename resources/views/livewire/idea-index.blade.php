@@ -13,16 +13,16 @@
         <div class="text-center">
             <div class="text-2xl font-semibold @if ($hasVoted) text-blue @endif">{{ $votesCount }}
             </div>
-            <div class="text-gray-500">votes</div>
+            <div class="text-gray-500">voti</div>
         </div>
 
         <div class="mt-8">
             @if ($hasVoted)
                 <button wire:click.prevent="vote"
-                    class="w-20 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bluehover rounded-xl">Voted</button>
+                    class="w-20 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bluehover rounded-xl">Votato</button>
             @else
                 <button wire:click.prevent="vote"
-                    class="w-20 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>
+                    class="w-20 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vota</button>
             @endif
         </div>
     </div>
@@ -77,10 +77,10 @@
                         </div>
                         @if ($hasVoted)
                             <button wire:click.prevent="vote"
-                                class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bluehover hover:border-bluehover rounded-xl">Voted</button>
+                                class="w-32 px-4 py-3 text-xs font-bold text-white uppercase transition duration-100 ease-in border shadow border-blue bg-blue hover:bluehover hover:border-bluehover rounded-xl">Votato</button>
                         @else
                             <button wire:click.prevent="vote"
-                                class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vote</button>
+                                class="w-32 px-4 py-3 text-xs font-bold uppercase transition duration-100 ease-in bg-gray-200 border border-gray-200 shadow hover:border-gray-400 rounded-xl">Vota</button>
                         @endif
 
                     </div>

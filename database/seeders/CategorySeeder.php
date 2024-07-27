@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = [['name' => 'Category 1'], ['name' => 'Category 2'], ['name' => 'Category 3'], ['name' => 'Category 4']];
+        $categories = [['name' => 'Categoria 1'], ['name' => 'Categoria 2'], ['name' => 'Categoria 3'], ['name' => 'Categoria 4']];
 
         Category::upsert($categories, ['name']);
     }

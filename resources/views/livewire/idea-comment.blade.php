@@ -37,14 +37,19 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link href="#">Edit Comment</x-dropdown-link>
-                                <x-dropdown-link href="#"> Mark as spam</x-dropdown-link>
-                                <x-dropdown-link href="#">Delete post</x-dropdown-link>
-                            </x-slot>
-                        </x-dropdown>
-                    @endauth
+                                    <x-dropdown-link href="#"
+                                        @click.prevent="isOpen = false
+                                            $dispatch('edit-comment-modal'
+                                            )">
+                                        Modifica
+                                    </x-dropdown-link>
+                                    <x-dropdown-link href="#">Segnala come spam</x-dropdown-link>
+                                    <x-dropdown-link href="#">Elimina</x-dropdown-link>
+                                </x-slot>
+                            </x-dropdown>
+                        @endauth
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

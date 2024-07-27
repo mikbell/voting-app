@@ -32,7 +32,7 @@ class AddComment extends Component
 
         $this->reset('comment');
 
-        $this->dispatch('comment-was-added', 'Comment was added successfully');
+        $this->dispatch('comment-was-added', 'Commento creato correttamente!');
     }
 
     public function render()

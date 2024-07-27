@@ -6,13 +6,13 @@
             @endforeach
         </div>
 
-        <div class="my-8 ml-22">
-            {{ $comments->onEachSide(1)->links() }}
+        <div class="my-8 sm:ml-22">
+            {{ $comments->onEachSide(1)->links('vendor.pagination.tailwind') }}
         </div>
     @else
         <div class="mx-auto mt-12 w-70">
             <div class="mt-6 font-bold text-center text-gray-400">
-                No comments yet...
+                Ancora nessun commento...
             </div>
         </div>
     @endif

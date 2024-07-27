@@ -15,23 +15,23 @@ class StatusSeeder extends Seeder
     {
         $statuses = [
             [
-                'name' => 'Open',
+                'name' => 'Aperto',
                 'classes' => 'bg-gray-200'
             ],
             [
-                'name' => 'Considering',
+                'name' => 'In Considerazione',
                 'classes' => 'bg-purple text-white'
             ],
             [
-                'name' => 'In Progress',
+                'name' => 'In progresso',
                 'classes' => 'bg-yellow text-white'
             ],
             [
-                'name' => 'Implemented',
+                'name' => 'Implementato',
                 'classes' => 'bg-green text-white'
             ],
             [
-                'name' => 'Closed',
+                'name' => 'Chiuso',
                 'classes' => 'bg-red text-white'
             ]
         ];

@@ -19,9 +19,7 @@ new class extends Component {
     <x-link href="/">
         <img src="{{ asset('img/logo.svg') }}" alt="">
     </x-link>
-    <x-link href="{{ route('user.index') }}">
-        Users
-    </x-link>
+
 
 
     <div class="flex items-center">
@@ -37,10 +35,10 @@ new class extends Component {
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                 </svg>
                             </button>
-
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link href="{{ route('user.index') }}">Users</x-dropdown-link>
                             <x-dropdown-link wire:click="logout" href="#">Logout</x-dropdown-link>
                         </x-slot>
                     </x-dropdown>

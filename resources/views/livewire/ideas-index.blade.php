@@ -2,8 +2,8 @@
     <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row filters">
         <div class="w-full md:w-1/3">
             <select wire:model.live="category" name="category" id="category"
-                class="w-full px-4 py-2 border-none shadow rounded-xl">
-                <option value="All Categories">All Categories</option>
+                class="w-full px-4 py-2 border-none shadow cursor-pointer rounded-xl">
+                <option value="All Categories">Categorie</option>
 
                 @foreach ($categories as $category)
                     <option value="{{ $category->name }}">{{ $category->name }}</option>
@@ -13,11 +13,11 @@
 
         <div class="w-full md:w-1/3">
             <select wire:model.live="filter" name="other_filters" id="other_filters"
-                class="w-full px-4 py-2 border-none shadow rounded-xl">
-                <option value="No filters">No filters</option>
-                <option value="Top Voted">Top Voted</option>
+                class="w-full px-4 py-2 border-none shadow cursor-pointer rounded-xl">
+                <option value="No filters">Nessun filtro</option>
+                <option value="Top Voted">I più votati</option>
                 @auth
-                    <option value="My Ideas">My Ideas</option>
+                    <option value="My Ideas">Le mie idee</option>
                 @endauth
                 @admin
                     <option value="Spam">Spam</option>
@@ -35,7 +35,7 @@
             </div>
 
 
-            <input wire:model.live.debounce.300ms="search" type="search" placeholder="find an idea"
+            <input wire:model.live.debounce.300ms="search" type="search" placeholder="Trova un'idea"
                 class="w-full px-4 py-2 pl-8 bg-white border-none shadow rounded-xl placeholder-text-gray-900">
         </div>
     </div> {{-- end filters --}}
@@ -47,14 +47,14 @@
         @empty
             <div class="mx-auto mt-12 w-70">
                 <div class="mt-6 font-bold text-center text-gray-400">
-                    No ideas found...
+                    Ancora nessuna idea...
                 </div>
             </div>
         @endforelse
 
     </div> {{-- end ideas-container --}}
 
-    <div>
-        {{ $ideas->appends(request()->query())->links() }}
+    <div class="py-8">
+        {{ $ideas->appends(request()->query())->links('vendor.pagination.simple-tailwind') }}
     </div>
 </div>
